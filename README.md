@@ -1,6 +1,8 @@
-# login_state
+# Login State for Flutter :tada:
 
-Login State for Flutter. Use mixin validator to recycle. 
+#### Implements Form
+#### Obtain values
+#### Use mixin validator to recycle. 
 
 ## Getting Started
 
