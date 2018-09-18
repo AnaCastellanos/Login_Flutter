@@ -1,6 +1,6 @@
 # login_state
 
-A new Flutter project.
+Login State for Flutter. Use mixin validator to recycle. 
 
 ## Getting Started
 
