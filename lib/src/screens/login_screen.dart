@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../mixins/validation_mixin.dart';
 
 class LoginScreen extends StatefulWidget {
   createState() {
@@ -6,7 +7,7 @@ class LoginScreen extends StatefulWidget {
   }
 }
 
-class LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> with ValidationMixin {
   final formKey = GlobalKey<FormState>();
 
   String email = '';
@@ -37,10 +38,7 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Email',
         hintText: 'you@example.com',
       ),
-      validator: (String value) {
-        if (!value.contains('@'))
-          return 'Please enter a valid email.';
-      },
+      validator: validateEmail, //From ValidationMixin
       onSaved: (String value) {
         email = value;
       },
@@ -54,10 +52,7 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Password',
         hintText: 'Password',
       ),
-      validator: (String value) {
-        if(value.length < 4)
-          return 'Password must be at least 4 characters';
-      },
+      validator: validatePassword, //From ValidationMixin
       onSaved: (String value) {
         password = value;
       },
@@ -68,9 +63,10 @@ class LoginScreenState extends State<LoginScreen> {
     return RaisedButton(
       color: Colors.blue, //Especificar un color aquí ignora el color del tema.
       onPressed: () {
-        if (formKey.currentState.validate())
+        if (formKey.currentState.validate()){
           formKey.currentState.save();
           print('Time to post $email and $password to my API');
+        } 
       },
       child: Text('Done'),
     );
