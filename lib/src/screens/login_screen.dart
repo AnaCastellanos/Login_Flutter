@@ -47,7 +47,7 @@ class LoginScreenState extends State<LoginScreen> with ValidationMixin {
 
   Widget passwordField() {
     return TextFormField(
-      obscureText: true,
+      obscureText: true, //Oculta caracteres
       decoration: InputDecoration(
         labelText: 'Password',
         hintText: 'Password',
